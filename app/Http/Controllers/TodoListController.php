@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TodoList;
 use App\Http\Requests\StoreTodoListRequest;
 use App\Http\Requests\UpdateTodoListRequest;
+use App\Models\TodoItem;
 use Illuminate\Support\Facades\Auth;
 
 class TodoListController extends Controller
@@ -45,7 +46,9 @@ class TodoListController extends Controller
      */
     public function show(TodoList $todoList)
     {
-        //
+        $todoItems = TodoItem::where('todo_list_id', $todoList['id'])->get();
+
+        return view('todo.items', ['todoItems' => $todoItems, 'title' => $todoList->title]);
     }
 
     /**

@@ -25,3 +25,7 @@ Route::get('login', [AuthController::class, 'index']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::get('todo/list', [TodoListController::class, 'index']);
+Route::get(
+    'todo/list/{todoList}',
+    [TodoListController::class, 'show']
+)->name('todo.item');
