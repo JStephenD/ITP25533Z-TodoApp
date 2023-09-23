@@ -3,7 +3,7 @@
 <ul>
     @foreach ($todoLists as $todoList)
     <h4>
-        <li>{{ $todoList->title }} <a href="/todo/list/<?= $todoList->id ?>">Goto List</a> </li>
+        <li>{{ $todoList->title }} <a href="/todo/list/{{ $todoList->id }}">Goto List</a> </li>
     </h4>
     @endforeach
 </ul>

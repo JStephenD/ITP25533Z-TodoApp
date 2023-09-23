@@ -22,6 +22,8 @@ Route::get('home', function () {
     return view('home');
 });
 Route::get('login', [AuthController::class, 'index']);
+Route::get('signup', [AuthController::class, 'signup']);
+Route::post('signup', [AuthController::class, 'signupPost']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::get('todo/list', [TodoListController::class, 'index']);
