@@ -7,11 +7,14 @@ use App\Http\Requests\StoreTodoListRequest;
 use App\Http\Requests\UpdateTodoListRequest;
 use App\Models\TodoItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class TodoListController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->flash('status', 'Task was successful!');
+
         $todoLists = TodoList::where('user_id', Auth::id())->get();
         $name = Auth::user()->name;
         return view('todo.list', ['todoLists' => $todoLists, 'name' => $name]);

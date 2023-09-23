@@ -57,15 +57,13 @@ class AuthController extends Controller
     public function signupPost(Request $request)
     {
         $values = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:15|max:30',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed'
         ]);
 
-        if (User::create($values)) {
-            return redirect('login');
-        }
+        User::create($values);
 
-        return back()->withErrors($values);
+        return redirect('login');
     }
 }
